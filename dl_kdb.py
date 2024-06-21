@@ -106,19 +106,19 @@ if dl_type == "Activation Functions" :
 #-----------------------------------------------------------------------
     if a_f == 'Logistic (Sigmoid) Function':
 
-        st.header('Logistic (Sigmoid) Function')
+        #st.subheader('Logistic (Sigmoid) Function')
         tab1, tab2, tab3, tab4 = st.tabs(["**Description**","**Plot**","**Derivative**","**Pros & Cons**"])
 
         with tab1:
 
-            st.subheader('Description')
+            #st.subheader('Description')
             st.write('It is a sigmoid function with a characteristic "S"-shaped curve.')
             st.markdown(r'**$sigmoid(z)=\frac{1}{1+exp(-z)}$**')
             st.write('The output of the logistic (sigmoid) function is always between 0 and 1.')   
 
         with tab2:
     
-            st.subheader('Plot')
+            #st.subheader('Plot')
             logistic_fig  = plot_function(logistic, title='Logistic (Sigmoid) Activation Function')
             logistic_fig.add_annotation(x=7, y=1, text='<b>Saturation</b>', showarrow=True,font=dict(family="Montserrat", size=16, color="#1F8123"),
                                         align="center",arrowhead=2, arrowsize=1, arrowwidth=2, arrowcolor="#A835E1", ax=-20, ay=30,)
@@ -133,7 +133,7 @@ if dl_type == "Activation Functions" :
 
         with tab3:
     
-            st.subheader('Derivative')
+            #st.subheader('Derivative')
             st.markdown(r'$sigmoid^{\prime}(z)=sigmoid(z)(1−sigmoid(z))$')
             st.text("")
             logistic_der_fig = plot_function_derivative(logistic, title='Derivative of the Logistic Function')
