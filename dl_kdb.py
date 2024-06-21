@@ -99,13 +99,14 @@ st.sidebar.divider()
 
 if dl_type == "Activation Functions" :
 
-    st.subheader("Activation Functions",divider='blue')
+    #st.subheader("Activation Functions",divider='blue')
     a_f = st.selectbox('**:blue[Choose an activation function]**', ['None', 'Logistic (Sigmoid) Function', 'Hyperbolic Tangent (Tanh) Function', 'ReLU Function', 'LeakyReLU Function', 'Variants of LeakyReLU Function', 'Exponential Linear Unit Function', 'SELU Function'])
     st.divider()
 
 #-----------------------------------------------------------------------
     if a_f == 'Logistic (Sigmoid) Function':
 
+        st.subheader("Logistic (Sigmoid) Function",divider='blue')
 
         #st.subheader('Description')
         st.write('It is a sigmoid function with a characteristic "S"-shaped curve.')
