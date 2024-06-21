@@ -218,7 +218,7 @@ if dl_type == "Activation Functions" :
             st.write('- The ReLU function is not differentiable at z = 0.')
 
         st.divider()
-        
+
         st.subheader('Pros')
         st.write("1. Computationally Efficient\n- The ReLU function does not require a lot of computation (Unlike the logistic and the tanh function which include an exponential function).\n- Because the ReLU function mimics a linear function when the input is positive, it is very easy to optimize.")
         st.write("2. Sparse Representaion\n- The ReLU function can output true zero values when the input is negative. This results in sparse weight matricies which help simplify the model architecure and speed up the learning process.\n- In contrast, the logistic and the tanh function always output non-zero values (sometimes the output is very close to zero, but not a true zero), which results in a dense representation.")
@@ -227,3 +227,53 @@ if dl_type == "Activation Functions" :
         st.subheader('Cons')
         st.write("1. Dying ReLUs\n- A problem where ReLU neurons become inactive and only output 0 for any input.\n- This usually happens when the weighted sum of the inputs for all training examples is negative, coupled with a large learning rate.\n- This causes the ReLU function to only output zeros and gradient descent algorithm can not affect it anymore.\n- One of the explanations of this phenomenon is using symmetirc weight distributions to initialize weights and biases.")
         st.write("2. Not differentiable at 0.\n- An abrupt change in the slope causes gradient descent to bounce around.")
+
+#-----------------------------------------------------------------------
+    
+    if a_f == 'LeakyReLU Function':
+
+        st.subheader("LeakyReLU Function",divider='blue')
+
+        #st.subheader('Description')
+        st.write('A variant of the ReLU function that solves the dying ReLUs problem.')
+        st.markdown(r'$LeakyReLU_{\alpha}(z) = max({\alpha}z, z)$')
+        st.write('It will output the input directly if it is positive (identity function), but it will output (α * input) if it is negative.')
+        st.write('This will ensure that the LeakyReLU function never dies.')
+
+        st.divider()
+
+        #st.subheader('Plot')
+        with st.sidebar.form('leakage'):
+            alpha = st.slider('α Value', 0.0, 1.0, 0.2)
+            st.form_submit_button('Apply Changes')
+
+        def leaky_relu(z, alpha=alpha):
+            return np.maximum(alpha*z, z)
+
+        leaky_fig = plot_function(leaky_relu, title="LeakyReLU Function", alpha=alpha)
+        st.plotly_chart(leaky_fig)
+
+        with st.expander('Plot Explanation'):
+            st.write("- This plot will automatically change when you change the value of α from the sidebar slider.")
+            st.write('- Notice that the output of the LeakyReLU function is never a true zero for negative inputs, which helps avoid the dying ReLUs problem.')
+            st.write('- The value α is a hyperparameter that defines how much the function leaks.')
+            st.write('- α represents the slope of the function when the input is negative.')
+            st.write('- The value of α is usually between 0.1 and 0.3.')
+
+        st.divider()
+
+        #st.subheader('Derivative')
+        st.markdown(r'$$LeakyRelu^{\prime}(z)= \left\{\begin{array}{ll}1 & z>0 \\{\alpha} & z<=0 \\\end{array}\right.$$')
+        leaky_der_fig = plot_function_derivative(leaky_relu, title="Derivative of the LeakyReLU Function")
+        st.plotly_chart(leaky_der_fig)
+        with st.expander('Plot Explanation'):
+            st.write("- This plot will automatically change when you change the value of α from the sidebar slider.")
+            st.write("- Notice that the derivative of the function when the input is negative is equal to the value of α.")
+            st.write("- The function has a nonzero gradient for negative inputs.")
+
+        st.divider()
+            
+        st.subheader("Pros")
+        st.write("1. Alleviate the Vanishing Gradient Problem")
+        st.write("2. Avoids the Dead ReLUs Problem\n- By allowing the function to have a small gradient when the input is negative, we ensure that the neuron never dies.")
+        st.write("3. Better Performance\n- The LeakyReLU function along with its variants almost always outperform the standard ReLU.")
