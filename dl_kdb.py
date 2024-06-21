@@ -100,6 +100,6 @@ st.sidebar.divider()
 if dl_type == "Activation Functions" :
 
     st.subheader("Activation Functions",divider='blue')
-    a_f = st.selectbox('**:blue[Choose an activation function]', ['None', 'Logistic (Sigmoid) Function', 'Hyperbolic Tangent (Tanh) Function', 'ReLU Function', 'LeakyReLU Function', 'Variants of LeakyReLU Function', 'Exponential Linear Unit Function', 'SELU Function'])
+    a_f = st.selectbox('**:blue[Choose an activation function]**', ['None', 'Logistic (Sigmoid) Function', 'Hyperbolic Tangent (Tanh) Function', 'ReLU Function', 'LeakyReLU Function', 'Variants of LeakyReLU Function', 'Exponential Linear Unit Function', 'SELU Function'])
     st.divider()
 
