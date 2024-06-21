@@ -3,7 +3,8 @@ pandas
 matplotlib
 seaborn
 streamlit
-
+plotly
+scipy
 
 
 
