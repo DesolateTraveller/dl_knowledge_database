@@ -21,7 +21,7 @@ from scipy.special import erfc
 st.set_page_config(page_title="Deep Learning | Knowledge Database",
                    layout="wide",
                    #page_icon=               
-                   initial_sidebar_state="collapsed")
+                   initial_sidebar_state="auto")
 #----------------------------------------
 st.title(f""":rainbow[Deep Learning | Knowledge Database | v0.1]""")
 st.markdown('Created by | <a href="mailto:avijit.mba18@gmail.com">Avijit Chakraborty</a>', 
@@ -83,8 +83,8 @@ z = np.linspace(-8,8,200)
 
 #-------------------------------------------------------------------
 
-st.sidebar.header("Input", divider='blue')
-st.sidebar.info('Please choose from the following options and follow the instructions to start the application.', icon="ℹ️")
+st.sidebar.header("Contents", divider='blue')
+#st.sidebar.info('Please choose from the following options and follow the instructions to start the application.', icon="ℹ️")
 dl_type = st.sidebar.radio("**:blue[Choose the options]**", ["Activation Functions", 
                                                             "Option2",
                                                             "Option3",
@@ -99,7 +99,7 @@ st.sidebar.divider()
 
 if dl_type == "Activation Functions" :
 
-    st.subheader("Question",divider='blue')
-    a_f = st.selectbox('Choose an activation function', ['None', 'Logistic (Sigmoid) Function', 'Hyperbolic Tangent (Tanh) Function', 'ReLU Function', 'LeakyReLU Function', 'Variants of LeakyReLU Function', 'Exponential Linear Unit Function', 'SELU Function'])
+    st.subheader("Activation Functions",divider='blue')
+    a_f = st.selectbox('**:blue[Choose an activation function]', ['None', 'Logistic (Sigmoid) Function', 'Hyperbolic Tangent (Tanh) Function', 'ReLU Function', 'LeakyReLU Function', 'Variants of LeakyReLU Function', 'Exponential Linear Unit Function', 'SELU Function'])
     st.divider()
 
