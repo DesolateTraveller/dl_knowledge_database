@@ -104,6 +104,7 @@ if dl_type == "Activation Functions" :
     st.divider()
 
 #-----------------------------------------------------------------------
+    
     if a_f == 'Logistic (Sigmoid) Function':
 
         st.subheader("Logistic (Sigmoid) Function",divider='blue')
@@ -148,6 +149,50 @@ if dl_type == "Activation Functions" :
         st.write("1. Limited Sensitivity\n- The logistic function saturates across most of its domain.\n- It is only sensitive to inputs around its midpoint 0.5.")
         st.write("2. Vanishing Gradients in Deep Neural Networks\n- Because the logistic function can get easily saturated with large inputs, its gradient gets very close to zero. This causes the gradients to get smaller and smaller as backpropagation progresses down to the lower layers of the network.\n- Eventually, the lower layers' weights receive very small updates and never converge to their optimal values.")
 
+#-----------------------------------------------------------------------
+    
+    if a_f == 'Hyperbolic Tangent (Tanh) Function':
 
+        st.subheader("Hyperbolic Tangent (Tanh) Function",divider='blue')
 
+        st.write('The tanh function is also a sigmoid "S"-shaped function.')
+        st.markdown(r'$tanh(z)=\frac{e^{z} - e^{-z}}{e^{z} + e^{-z}}$')
+        st.write('The range of the tanh function is between -1 and 1.')
 
+        st.divider()
+        
+        #st.subheader('Plot')
+        tanh_fig = plot_function(np.tanh, title='Hyperbolic Tangent Function')
+        tanh_fig.add_annotation(x=7, y=1, text='<b>Saturation</b>', showarrow=True,font=dict(family="Montserrat", size=16, color="#1F8123"),
+                                align="center",arrowhead=2, arrowsize=1, arrowwidth=2, arrowcolor="#A835E1", ax=-20, ay=30,)
+        tanh_fig.add_annotation(x=-7, y=-1, text='<b>Saturation</b>', showarrow=True,font=dict(family="Montserrat", size=16, color="#1F8123"),
+                                align="center",arrowhead=2, arrowsize=1, arrowwidth=2, arrowcolor="#A835E1", ax=0, ay=-30,)
+        st.plotly_chart(tanh_fig)
+        
+        with st.expander('Plot Explanation'):
+            st.write('- The tanh function saturates as the inputs become larger (either positive or negative).')
+            st.write('- For large positive and negative values, the function gets asymptotically close to 1 and -1, respectively.')
+            st.write('- When the function saturates, its gradient becomes very close to zero, which slows down learning.')
+    
+        st.divider()
+
+        #st.subheader('Derivative')
+        st.markdown(r'$tanh^{\prime}(z)= 1 - (tanh(z))^{2}$')
+        st.text("")
+        tanh_der_fig = plot_function_derivative(np.tanh, title='Derivative of the Tanh Function')
+        st.plotly_chart(tanh_der_fig)
+        with st.expander('Plot Explanation'):
+            st.write('Notice that the derivative of the tanh function gets very close to zero for large positive and negative inputs.')
+    
+        st.divider()
+        
+        st.subheader('Pros')
+        st.write("1. The tanh function introduces non-linearity into the network which allows it to solve more complex problems than linear activation functions.\n2. It is continuous, differentiable, and have non-zero derivatives everywhere.\n3. Because its output value ranges from -1 to 1, that makes each layer's output more or less centered around 0 at the beginning of training, whcih speed up convergence.")
+
+        st.subheader('Cons')
+        st.write("1. Limited Sensitivity\nThe tanh function saturates across most of its domain. It is only sensitive to inputs around its midpoint 0.")
+        st.write("2. Vanishing Gradients in Deep Neural Networks\n- Because the tanh function can get easily saturated with large inputs, its gradient gets very close to zero.\n- This causes the gradients to get smaller and smaller as backpropagation progresses down to the lower layers of the network.\n- Eventually, the lower layers' weights receive very small updates and never converge to their optimal values.")
+
+        st.markdown("**Note**: the vanishing gradient problem is less severe with the tanh function because it has a mean of 0 (instead of 0.5 like the logistic function).")
+
+#-----------------------------------------------------------------------
