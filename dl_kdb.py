@@ -74,3 +74,32 @@ def plot_function_derivative(func, title):
     fig.update_xaxes(zeroline=True, zerolinewidth=3, zerolinecolor='violet')
     fig.update_yaxes(zeroline=True, zerolinewidth=3, zerolinecolor='violet')
     return fig
+
+#---------------------------------------------------------------------------------------------------------------------------------
+### Main App
+#---------------------------------------------------------------------------------------------------------------------------------
+
+z = np.linspace(-8,8,200)
+
+#-------------------------------------------------------------------
+
+st.sidebar.header("Input", divider='blue')
+st.sidebar.info('Please choose from the following options and follow the instructions to start the application.', icon="ℹ️")
+dl_type = st.sidebar.radio("**:blue[Choose the options]**", ["Activation Functions", 
+                                                            "Option2",
+                                                            "Option3",
+                                                            "Option4",
+                                                            "Option5", 
+                                                            "Option6",])
+st.sidebar.divider()
+
+#---------------------------------------------------------------------------------------------------------------------------------
+### PDF
+#---------------------------------------------------------------------------------------------------------------------------------
+
+if dl_type == "Activation Functions" :
+
+    st.subheader("Question",divider='blue')
+    a_f = st.selectbox('Choose an activation function', ['None', 'Logistic (Sigmoid) Function', 'Hyperbolic Tangent (Tanh) Function', 'ReLU Function', 'LeakyReLU Function', 'Variants of LeakyReLU Function', 'Exponential Linear Unit Function', 'SELU Function'])
+    st.divider()
+
