@@ -103,3 +103,7 @@ if dl_type == "Activation Functions" :
     a_f = st.selectbox('**:blue[Choose an activation function]**', ['None', 'Logistic (Sigmoid) Function', 'Hyperbolic Tangent (Tanh) Function', 'ReLU Function', 'LeakyReLU Function', 'Variants of LeakyReLU Function', 'Exponential Linear Unit Function', 'SELU Function'])
     st.divider()
 
+
+    if a_f == 'Logistic (Sigmoid) Function':
+
+        st.header('Logistic (Sigmoid) Function')
