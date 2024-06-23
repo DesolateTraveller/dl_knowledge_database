@@ -18,12 +18,12 @@ from scipy.special import erfc
 ### Title and description for your Streamlit app
 #---------------------------------------------------------------------------------------------------------------------------------
 #import custom_style()
-st.set_page_config(page_title="Deep Learning | Knowledge Database",
+st.set_page_config(page_title="ML | DL | NLP | Knowledge Database",
                    layout="wide",
                    #page_icon=               
                    initial_sidebar_state="auto")
 #----------------------------------------
-st.title(f""":rainbow[Deep Learning | Knowledge Database | v0.1]""")
+st.title(f""":rainbow[Machine Learning | Deep Learning | Natural Language Processing (NLP) Knowledge Database | v0.2]""")
 st.markdown('Created by | <a href="mailto:avijit.mba18@gmail.com">Avijit Chakraborty</a>', 
             unsafe_allow_html=True)
 st.info('**Disclaimer : :blue[Thank you for visiting the app] | Unauthorized uses or copying of the app is strictly prohibited | Click the :blue[sidebar] to follow the instructions to start the applications.**', icon="ℹ️")
@@ -80,19 +80,22 @@ def plot_function_derivative(func, title):
 
 st.sidebar.header("Contents", divider='blue')
 #st.sidebar.info('Please choose from the following options and follow the instructions to start the application.', icon="ℹ️")
-dl_type = st.sidebar.radio("**:blue[Choose the options]**", ["Activation Functions", 
+
+ml_dl_nlp_type = st.sidebar.radio("**:blue[Choose the options]**", ["Activation Functions", 
                                                             "Option2",
                                                             "Option3",
                                                             "Option4",
                                                             "Option5", 
                                                             "Option6",])
+
+
 st.sidebar.divider()
 
 #---------------------------------------------------------------------------------------------------------------------------------
 ### Activation Functions
 #---------------------------------------------------------------------------------------------------------------------------------
 
-if dl_type == "Activation Functions" :
+if ml_dl_nlp_type == "Activation Functions" :
 
     z = np.linspace(-8,8,200)
 
@@ -398,7 +401,7 @@ if dl_type == "Activation Functions" :
         st.write("**3. The input features must be standardized**")
 
         st.divider()
-        
+
         st.subheader("Pros")
         st.write("1. Avoid the Vanishing Gradient Problem\n- Because of the self-normalization effect, the vanishing/exploding gradient problem is eliminated.")
         st.write("2. Better Performance\n- The SELU function performs significantly better than other activation functions.")
