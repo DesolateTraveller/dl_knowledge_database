@@ -82,7 +82,7 @@ st.sidebar.header("Contents", divider='blue')
 #st.sidebar.info('Please choose from the following options and follow the instructions to start the application.', icon="ℹ️")
 
 ml_dl_nlp_type = st.sidebar.radio("**:blue[Choose the options]**", ["Activation Functions", 
-                                                            "Option2",
+                                                            "Artificial Intelligence",
                                                             "Option3",
                                                             "Option4",
                                                             "Option5", 
@@ -407,4 +407,13 @@ if ml_dl_nlp_type == "Activation Functions" :
         st.write("2. Better Performance\n- The SELU function performs significantly better than other activation functions.")
 
         st.subheader("Cons")
-        st.write("1. Unguaranteed Self-Normalization\n- The self-normalization effect of SELU is only guaranteed under certain conditions.")
+
+#---------------------------------------------------------------------------------------------------------------------------------
+### Artificial Intelligence
+#---------------------------------------------------------------------------------------------------------------------------------
+
+if ml_dl_nlp_type == "Artificial Intelligence" :
+
+    st.subheader("Artificial Intelligence (AI)",divider='blue')
+
+    st.write('AI is the creation of software that imitates human behaviors and capabilities..')
