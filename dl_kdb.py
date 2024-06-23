@@ -340,7 +340,7 @@ if dl_type == "Activation Functions" :
             st.write("- The function has a nonzero gradient for negative inputs.")
 
         st.divider()
-            
+
         st.subheader('Pros')
         st.write("1. Alleviate the Vanishing Gradient Problem")
         st.write("2. Avoids the Dead ReLUs Problem")
@@ -350,3 +350,58 @@ if dl_type == "Activation Functions" :
         st.subheader("Cons")
         st.write("1. Computationally Expensive\n- Because it uses the exponential function, the ELU is slower to compute than other variants of ReLU.")
 
+#-----------------------------------------------------------------------
+    
+    if a_f == 'SELU Function':
+
+        st.subheader("Scaled ELU (SELU)",divider='blue')
+
+        #st.subheader('Description')
+        st.write('The SELU function is a scaled variant of the ELU function.')
+
+        st.markdown(r'$$SELU_{\alpha}(z)= {\lambda}\left\{\begin{array}{ll}z & z>0 \\{\alpha}(exp(z)-1) & z<=0 \\\end{array}\right.$$')
+
+        st.write("Under certain conditions, using the SELU function will cause the neural network to self-normalize.")
+
+        st.write("The values of λ and α are predetermined by the authors of the function and you do not need to tune them.")
+        st.write(r"$α {\approx} %f$"%selu_alpha)
+        st.write(r"$λ {\approx} %f$"%selu_alpha)
+
+        st.divider()
+
+        #st.subheader('Plot')
+        selu_fig = plot_function(selu, title='Scaled ELU (SELU) Function')
+        st.plotly_chart(selu_fig)
+
+        with st.expander('Plot Explanation'):
+            st.write("- If the input is positive, the function will return (λ * input).")
+            st.write("- Similar to LeakyReLU, the output of the  function is never a true zero for negative inputs, which helps avoid the dying ReLUs problem.")
+
+        st.divider()
+
+        #st.subheader("Derivative")
+        st.markdown(r'$$SELU^{\prime}(z)= {\lambda}\left\{\begin{array}{ll}1 & z>0 \\{\alpha} * exp(z) & z<=0 \\\end{array}\right.$$')
+
+        st.text("")
+
+        selu_der_fig = plot_function_derivative(selu, title='Derivative of the SELU Function')
+        st.plotly_chart(selu_der_fig)
+
+        st.divider()
+
+        st.subheader("SELU\'s Self-Normalization Effect")
+        st.write("One of the major benefits of using the SELU activation function is that it will cause the network to self-normalize.\nIn other words, the output of each layer will maintain a mean of 0 and standard deviation of 1 (follow the standard normal distribution)")
+        st.write("However, for self-normalization to take place, there are certain conditions that need to be satisfied.")
+        st.markdown("**1. The network's architecure must be sequential**")
+        st.write("Self-normalization is not guaranteed for different architectures such as RNNs, or architectures with skip connections for example.")
+        st.write("**2. The network parameters (weights and biases) must be initialized using \"LeCun normal initialization\"**")
+        st.write("**3. The input features must be standardized**")
+
+        st.divider()
+        
+        st.subheader("Pros")
+        st.write("1. Avoid the Vanishing Gradient Problem\n- Because of the self-normalization effect, the vanishing/exploding gradient problem is eliminated.")
+        st.write("2. Better Performance\n- The SELU function performs significantly better than other activation functions.")
+
+        st.subheader("Cons")
+        st.write("1. Unguaranteed Self-Normalization\n- The self-normalization effect of SELU is only guaranteed under certain conditions.")
