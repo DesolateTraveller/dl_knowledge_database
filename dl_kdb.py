@@ -295,3 +295,58 @@ if dl_type == "Activation Functions" :
         #st.title('Parametric LeakyReLU (PReLU)')
         st.write("1. In this variant, the value of α is a trainable (learnable) parameter rather than a hyperparameter.")
         st.write("2. In other words, the backpropagation algorithm can tweak its value like any other model parameter.")
+
+#-----------------------------------------------------------------------
+    
+    if a_f == 'Exponential Linear Unit Function':
+
+        st.subheader("Exponential Linear Unit Function (ELU)",divider='blue')
+
+        st.subheader('Description')
+        st.markdown(r'$$ELU_{\alpha}(z)= \left\{\begin{array}{ll}z & z>0 \\{\alpha}(exp(z)-1) & z<=0 \\\end{array}\right.$$')
+
+        st.write('Similar to the ReLU function, ELU will output the input directly if it is positive (identity function).')
+        st.write('However, ELU\'s output is negative for negative inputs depending on the value of α')
+
+        st.divider()
+
+        #st.subheader('Plot')
+        with st.sidebar.form('leakage'):
+            alpha = st.slider('α Value', 0.0, 1.0, 0.2)
+            st.form_submit_button('Apply Changes')
+
+        def elu(z, alpha=alpha):
+            return np.where(z < 0, alpha * (np.exp(z) - 1), z)
+
+        elu_fig = plot_function(elu, title="Exponential Linear Unit (ELU) Function", alpha=alpha)
+        st.plotly_chart(elu_fig)
+
+        with st.expander('Plot Explanation'):
+            st.write("- This plot will automatically change when you change the value of α from the sidebar slider.")
+            st.write('- Similar to LeakyReLU, the output of the  function is never a true zero for negative inputs, which helps avoid the dying ReLUs problem.')
+            st.write('- The value of α is usually set to 1, or chosen in the range of [0.1 and 0.3].')
+            st.write('- If α is equal to 1, the function is smooth everywhere (easier optimization).')
+
+        st.divider()
+
+        #st.subheader('Derivative')
+        st.markdown(r'$$ELU^{\prime}(z)= \left\{\begin{array}{ll}1 & z>0 \\{\alpha}*exp(z) & z<=0 \\\end{array}\right.$$')
+
+        elu_der_fig = plot_function_derivative(elu, title='Derivative of ELU')
+        st.plotly_chart(elu_der_fig)
+
+        with st.expander('Plot Explanation'):
+            st.write("- This plot will automatically change when you change the value of α from the sidebar slider.")
+            st.write("- The function has a nonzero gradient for negative inputs.")
+
+        st.divider()
+            
+        st.subheader('Pros')
+        st.write("1. Alleviate the Vanishing Gradient Problem")
+        st.write("2. Avoids the Dead ReLUs Problem")
+        st.write("3. Faster Convergence\n- When the value of α equals 1, the function is smooth everywhere, which speeds up gradient descent.")
+        st.write("4. Better Performance.\n- The ELU function outperforms most other ReLU variants with reduced training time.")
+
+        st.subheader("Cons")
+        st.write("1. Computationally Expensive\n- Because it uses the exponential function, the ELU is slower to compute than other variants of ReLU.")
+
