@@ -302,7 +302,7 @@ if dl_type == "Activation Functions" :
 
         st.subheader("Exponential Linear Unit Function (ELU)",divider='blue')
 
-        st.subheader('Description')
+        #st.subheader('Description')
         st.markdown(r'$$ELU_{\alpha}(z)= \left\{\begin{array}{ll}z & z>0 \\{\alpha}(exp(z)-1) & z<=0 \\\end{array}\right.$$')
 
         st.write('Similar to the ReLU function, ELU will output the input directly if it is positive (identity function).')
