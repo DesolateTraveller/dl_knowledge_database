@@ -243,7 +243,7 @@ if dl_type == "Activation Functions" :
         st.divider()
 
         #st.subheader('Plot')
-        with st.sidebar.form('leakage'):
+        with st.form('leakage'):
             alpha = st.slider('α Value', 0.0, 1.0, 0.2)
             st.form_submit_button('Apply Changes')
 
